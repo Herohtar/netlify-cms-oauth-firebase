@@ -14,13 +14,9 @@ npm i
 For GitHub, the instructions can be found in the [GitHub Developer Documentation](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/). The values that you provide for the fields do not matter, except for **authorization callback URL**, which will be updated in a later step.
 
 ## 3) Configure Environment
-Update `.firebaserc` with your project ID:
-```json
-{
-  "projects": {
-    "default": "your-project-id"
-  }
-}
+Configure Firebase to use your project:
+```
+firebase use your-project-id
 ```
 
 Set the `client_id` and `client_secret` Firebase environment variables using the values from the GitHub OAuth app:
@@ -28,13 +24,13 @@ Set the `client_id` and `client_secret` Firebase environment variables using the
 firebase functions:config:set oauth.client_id=yourclientid oauth.client_secret=yourclientsecret
 ```
 
-For GitHub Enterprise and GitLab you will need to set the `git_hostname` variable.
+For GitHub Enterprise and GitLab you will need to set the `oauth.git_hostname` variable.
 For GitLab you will also need to set the following additional variables as specified:
 ```
-oauth_provider=gitlab
-scopes=api
-oauth_authorize_path=/oauth/authorize
-oauth_token_path=/oauth/token
+oauth.provider=gitlab
+oauth.scopes=api
+oauth.authorize_path=/oauth/authorize
+oauth.token_path=/oauth/token
 ```
 
 ## 4) Deploy Function
