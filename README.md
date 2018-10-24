@@ -1,6 +1,6 @@
 # netlify-cms-oauth-firebase
 
-This is a Firebase Cloud Function that allows [Netlify CMS](https://www.netlifycms.org/) to authenticate with GitHub or GitLab via OAuth2.
+This is a [Firebase Cloud Function](https://firebase.google.com/docs/functions/) that allows [Netlify CMS](https://www.netlifycms.org/) to authenticate with GitHub or GitLab via OAuth2.
 
 ## Setup
 ### 0) Prerequisites
