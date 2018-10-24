@@ -1,8 +1,11 @@
 # netlify-cms-oauth-firebase
 
-This is a Firebase Cloud Function that allows [Netlify CMS](https://www.netlifycms.org/) to authenticate with GitHub or GitLab via OAuth2.
+This is a [Firebase Cloud Function](https://firebase.google.com/docs/functions/) that allows [Netlify CMS](https://www.netlifycms.org/) to authenticate with GitHub or GitLab via OAuth2.
 
 ## Setup
+### 0) Prerequisites
+These instructions require that you have created a [Firebase](https://firebase.google.com/) project and have installed and configured the [Firebase CLI Tools](https://github.com/firebase/firebase-tools). See the [Firebase CLI Reference](https://firebase.google.com/docs/cli/) for more details.
+
 ### 1) Get the code
 Clone the repository and install dependencies:
 ```
@@ -57,5 +60,5 @@ backend:
 ```
 
 ## Notes
-- The OAuth2 API makes external network requests which requires a Firebase project that has billing enabled.
+- The OAuth2 API makes external network requests which requires a Firebase project that has billing enabled. (**Spark** or **Blaze** plan)
 - Firebase does not handle the function root correctly, so calls to `https://us-central1-your-project-id.cloudfunctions.net/oauth` (no trailing slash) will fail with the error `"Cannot GET null"`. If for some reason you are trying to call the root function, you must use a trailing slash (`https://us-central1-your-project-id.cloudfunctions.net/oauth/`)
