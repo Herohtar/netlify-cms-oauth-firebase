@@ -68,7 +68,7 @@ oauthApp.get('/callback', (req, res) => {
       provider: oauth_provider
     }))
   }).catch((error) => {
-    console.error('Access Token Error', error.messsage)
+    console.error('Access Token Error', error.message)
     res.send(getScript('error', error))
   })
 })
