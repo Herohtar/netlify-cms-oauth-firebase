@@ -61,4 +61,3 @@ backend:
 
 ## Notes
 - The OAuth2 API makes external network requests which requires a Firebase project that has billing enabled. (**Spark** or **Blaze** plan)
-- Firebase does not handle the function root correctly, so calls to `https://us-central1-your-project-id.cloudfunctions.net/oauth` (no trailing slash) will fail with the error `"Cannot GET null"`. If for some reason you are trying to call the root function, you must use a trailing slash (`https://us-central1-your-project-id.cloudfunctions.net/oauth/`)
