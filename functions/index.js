@@ -78,7 +78,7 @@ oauthApp.get('/success', (req, res) => {
 })
 
 oauthApp.get('/', (req, res) => {
-  res.redirect('auth')
+  res.redirect(301, `/oauth/auth`)
 })
 
 exports.oauth = functions.https.onRequest(oauthApp)
