@@ -12,6 +12,7 @@ Clone the repository and install dependencies:
 git clone https://github.com/Herohtar/netlify-cms-oauth-firebase
 cd netlify-cms-oauth-firebase/functions
 npm i
+cd ..
 ```
 
 ### 2) Create an OAuth app
