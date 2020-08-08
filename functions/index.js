@@ -21,7 +21,7 @@ function getScript(mess, content) {
     console.log("Sending message: %o", "github")
     window.opener.postMessage("authorizing:github", "*")
     })()
-  </script></body></html>`;
+  </script></body></html>`
 }
 
 const oauth2 = simpleOauth.create({
@@ -32,7 +32,7 @@ const oauth2 = simpleOauth.create({
   auth: {
     tokenHost: oauth.git_hostname || 'https://github.com',
     tokenPath: oauth.token_path || '/login/oauth/access_token',
-    authorizePath: oauth.authorize_path || '/login/oauth/authorize'
+    authorizePath: oauth.authorize_path || '/login/oauth/authorize',
   }
 })
 
@@ -48,7 +48,7 @@ oauthApp.get('/auth', (req, res) => {
   res.redirect(authorizationUri)
 })
 
-oauthApp.get('/callback', (req, res) => {
+oauthApp.get('/callback', async (req, res) => {
   var options = {
     code: req.query.code
   }
@@ -60,17 +60,19 @@ oauthApp.get('/callback', (req, res) => {
     options.redirect_uri = oauth.redirect_url
   }
 
-  return oauth2.authorizationCode.getToken(options).then((result) => {
+  try {
+    const result = await oauth2.authorizationCode.getToken(options)
     const token = oauth2.accessToken.create(result)
 
     return res.send(getScript('success', {
       token: token.token.access_token,
       provider: oauth_provider
     }))
-  }).catch((error) => {
+  }
+  catch (error) {
     console.error('Access Token Error', error.message)
     res.send(getScript('error', error))
-  })
+  }
 })
 
 oauthApp.get('/success', (req, res) => {
