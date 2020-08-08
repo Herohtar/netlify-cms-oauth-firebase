@@ -61,6 +61,3 @@ backend:
   base_url: https://us-central1-your-project-id.cloudfunctions.net # The base URL for your Firebase Function
   auth_endpoint: /oauth/auth # The path to the OAuth endpoint of the function
 ```
-
-## Notes
-- The OAuth2 API makes external network requests which requires a Firebase project that has billing enabled. (**Spark** or **Blaze** plan)
