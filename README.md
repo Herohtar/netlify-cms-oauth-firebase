@@ -4,7 +4,9 @@ This is a [Firebase Cloud Function](https://firebase.google.com/docs/functions/)
 
 ## Setup
 ### 0) Prerequisites
-These instructions require that you have created a [Firebase](https://firebase.google.com/) project and have installed and configured the [Firebase CLI Tools](https://github.com/firebase/firebase-tools). See the [Firebase CLI Reference](https://firebase.google.com/docs/cli/) for more details.
+These instructions assume that you have already created a [Firebase](https://firebase.google.com/) project and have installed and configured the [Firebase CLI Tools](https://github.com/firebase/firebase-tools). See the [Firebase CLI Reference](https://firebase.google.com/docs/cli/) for more details.
+
+**Note:** The Firebase project must be configured to use the **Blaze** plan, as the function needs to be able to make outbound network requests to non-Google services. Additionally, the function uses the Node.js 10 runtime, which is not available on the free plan.
 
 ### 1) Get the code
 Clone the repository and install dependencies:
