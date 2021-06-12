@@ -43,7 +43,7 @@ oauth.authorize_path=/oauth/authorize
 oauth.token_path=/oauth/token
 ```
 
-For security reasons set an origin_pattern to match the origins, so that only trusted origins could be use to authenticate.
+For security reasons set an origin_pattern to match the origins, so that only trusted origins could be use to authenticate. Replace yoursite.com with your domain.
 ```
 firebase functions:config:set oauth.origin_pattern="(^https://yoursite.com$|^https://www.yoursite.com$|^http://localhost:3000$)"
 ```
