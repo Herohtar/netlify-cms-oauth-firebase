@@ -11,6 +11,11 @@ function getScript(mess, content) {
   (function() {
     function receiveMessage(e) {
       console.log("receiveMessage %o", e)
+      if (!e.origin.match(${JSON.stringify(oauth.origin_pattern,"i")})) {
+          console.log('Invalid origin: %s', e.origin);
+          window.close();
+          return;
+        }
       window.opener.postMessage(
         'authorization:github:${mess}:${JSON.stringify(content)}',
         e.origin
@@ -49,6 +54,10 @@ oauthApp.get('/auth', (req, res) => {
 })
 
 oauthApp.get('/callback', async (req, res) => {
+  if(''.match(oauth.origin_pattern || '')){
+    console.error("Insecure ORIGIN pattern used. This can give unauthorized users access to your repository.");
+    process.exit();
+  }
   var options = {
     code: req.query.code
   }
@@ -73,6 +82,7 @@ oauthApp.get('/callback', async (req, res) => {
     console.error('Access Token Error', error.message)
     res.send(getScript('error', error))
   }
+  return 'Error';
 })
 
 oauthApp.get('/success', (req, res) => {
