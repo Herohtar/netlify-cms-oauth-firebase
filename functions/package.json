@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "firebase-admin": "^8.13.0",
+    "firebase-admin": "^11.4.1",
     "firebase-functions": "^3.9.0",
     "randomstring": "^1.1.5",
     "simple-oauth2": "^3.4.0"
